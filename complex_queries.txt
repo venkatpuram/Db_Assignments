@@ -1,0 +1,61 @@
+1)	WRITE A SQL STATEMENT TO DISPLAY THE LOWEST PAID EMPLOYEE'S (NAME , SALARY , DEPARTMENT NAME)
+	mysql> SELECT e.first_name,e.salary,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id order by salary limit 1;
+
+2)	LIST MINIMUM SALARY FOR EACH DEPARTMENT
+	mysql> SELECT department_id,min(salary) from employees group by department_id;
+
+3)	WRITE A QUERY  BASED ON  FOLLOWING RESULT. 
+	mysql> SELECT e.employee_id,e.first_name,e.job_id,e.salary,e.department_id,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id;
+
+
+4)	LIST ALL THE EMPLOYEES WHO ARE WORKING IN FORD’S DEPARTMENT.
+
+	mysql> SELECT * from employees where department_id=(SELECT department_id from employees where first_name='amit');
+
+5)	LIST ALL EMPLOYEE WHO ARE WORKING IN WARD'S DEPARTMENT AND
+	EARNING MORE THEN MARTIN
+	mysql> SELECT e.*,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id where department_name='sales' and salary>(SELECT salary from employees where first_name='jack');
+	
+
+
+
+6)	DISPLAY EMPLOYEE NUMBER, NAME,DEPT NUMBER, DEPT NAME, AND LOCATION
+	mysql> SELECT e.employee_id,e.first_name,e.department_id ,d.department_name,l.city from employees e INNER JOIN departments d ON e.department_id=d.department_id INNER JOIN locations l ON d.location_id=l.location_id;
+
+
+7)	DISPLAY THE FOLLOWING RESULT
+	mysql> SELECT e.first_name,e.department_id,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id;
+
+
+
+8)	LIST ALL THE EMPLOYEE WHO ARE WORKING IN NEW YORK
+	mysql> SELECT e.first_name,e.department_id,d.department_name,l.city from employees e INNER JOIN departments d ON e.department_id=d.department_id INNER JOIN locations l ON l.city='seattle' and d.location_id=l.location_id;
+
+
+9)	WRITE A SQL STATEMENT TO DISPLAY THE LOWEST PAID EMPLOYEE'S (NAME , SALARY , DEPARTMENT NAME) IN THE RESPECTIVE DEPARTMENT.
+	mysql> SELECT e.first_name ,min(e.salary),d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id group by d.department_name;
+
+10)	WRITE A SQL STATEMENT TO DISPLAY THE HIGHEST PAID EMPLOYEE'S (NAME, JOB, MANAGER NAME, SALARY AND DEPARTMENT NAME AND DEPARTMENT NO.) IN THE RESPECTIVE DEPARTMENT.
+	mysql> SELECT e.first_name ,max(e.salary),e.job_id,e.manager_id,e.department_id,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id group by d.department_name;
+
+
+11)	WRITE A SQL STATEMENT TO DISPLAY THE EMPLOYEE NAME (BOSS) AND NUMBER OF EMPLOYEE (SUBORDINATES) DIRECTLY REPORTING TO HIM?
+
+
+
+12)	DISPLAY THE NAMES, DESIGNATION AND SALARIES OF ALL EMPLOYEES WHO HAVE MANAGER ALONG WITH MANAGER'S NAME, DESIGNATION AND MANAGER'S SALARY.
+	(SELF-JOIN)
+13)	 CREATE THE FOLLOWING TABLES:
+	ORDER: {ID, ORDERDATE, ORDERNUMBER}
+	ORDER_ITEM: {ID, ORDERID, PRODUCTID, UNITPRICE, QUANTITY}
+	PRODUCT: {ID, PRODUCTNAME}
+	WRITE A QUERY TO DISPLAY THE FOLLOWING OUTPUT SORTED BY ORDER NO:
+
+
+
+
+14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
+15)	 FIND THE MAX 3 SALARIES FROM EMPLOYEE TABLE.
+16)	 DISPLAY COMMON RECORDS FROM EMP_1 & EMP_2 TABLES. (USE INTERSECT)
+17)	 DISPLAY DEPARTMENT NO WISE TOTAL SALARY WHERE MORE THAN 2 EMPLOYEES EXIST IN A DEPARTMENT.
+
