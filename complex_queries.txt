@@ -57,7 +57,10 @@
 
 14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
 	 mysql> select min(salary) from employees where salary<>(select min(salary) from employees);
+
 15)	 FIND THE MAX 3 SALARIES FROM EMPLOYEE TABLE.
+	 mysql> select distinct salary from employees order by salary desc limit 3;
+	
 16)	 DISPLAY COMMON RECORDS FROM EMP_1 & EMP_2 TABLES. (USE INTERSECT)
 17)	 DISPLAY DEPARTMENT NO WISE TOTAL SALARY WHERE MORE THAN 2 EMPLOYEES EXIST IN A DEPARTMENT.
 
