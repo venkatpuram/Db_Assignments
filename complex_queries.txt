@@ -40,27 +40,37 @@
 
 
 11)	WRITE A SQL STATEMENT TO DISPLAY THE EMPLOYEE NAME (BOSS) AND NUMBER OF EMPLOYEE (SUBORDINATES) DIRECTLY REPORTING TO HIM?
-	
+	mysql> SELECT e1.first_name "manager_name" ,count(e2.employee_id) from employees e1 INNER JOIN employees e2 on e2.manager_id=e1.employee_id group by e2.manager_id;
 
 
 12)	DISPLAY THE NAMES, DESIGNATION AND SALARIES OF ALL EMPLOYEES WHO HAVE MANAGER ALONG WITH MANAGER'S NAME, DESIGNATION AND MANAGER'S SALARY.
 	(SELF-JOIN)
+	mysql> SELECT e1.first_name,e1.job_id,e1.salary,e2.first_name,e2.job_id,e2.salary from employees e1 INNER JOIN employees e2 ON e1.manager_id=e2.employee_id;
 
 13)	 CREATE THE FOLLOWING TABLES:
 	ORDER: {ID, ORDERDATE, ORDERNUMBER}
 	ORDER_ITEM: {ID, ORDERID, PRODUCTID, UNITPRICE, QUANTITY}
 	PRODUCT: {ID, PRODUCTNAME}
 	WRITE A QUERY TO DISPLAY THE FOLLOWING OUTPUT SORTED BY ORDER NO:
-
+	mysql> SELECT o.order_number,o.order_date,i.quantity,i.unit_price,p.product_name
+		from orders o 
+		INNER JOIN order_item i 
+		ON o.order_id=i.order_id
+		INNER JOIN products p
+		i.product_id=p.product_id
+		GROUP BY o.order_number;
 
 
 
 14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
-	 mysql> select min(salary) from employees where salary<>(select min(salary) from employees);
+	 mysql> SELECT min(salary) from employees where salary<>(SELECT min(salary) from employees);
 
 15)	 FIND THE MAX 3 SALARIES FROM EMPLOYEE TABLE.
-	 mysql> select distinct salary from employees order by salary desc limit 3;
+	 mysql> SELECT distinct salary from employees order by salary desc limit 3;
 	
 16)	 DISPLAY COMMON RECORDS FROM EMP_1 & EMP_2 TABLES. (USE INTERSECT)
+	 mysql> SELECT department_id from employees where department_id IN (select department_id from departments);
+
 17)	 DISPLAY DEPARTMENT NO WISE TOTAL SALARY WHERE MORE THAN 2 EMPLOYEES EXIST IN A DEPARTMENT.
+	 
 
