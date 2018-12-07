@@ -9,16 +9,16 @@
 	mysql> SELECT first_name from employees WHERE department_id=30;
 
 4.	List the names, numbers and departmentno of all clerks.
-	mysql> SELECT first_name,phone_number,department_id from employees
+	mysql> SELECT first_name,phONe_number,department_id from employees
     		-> WHERE job_id LIKE "%CLERK";
 
 5.	Find the depart numbers and the name of employee of all dept with Deptno greater or equal to 20.
 	mysql> SELECT department_id, first_name from employees WHERE department_id>=20;
 
-6.	Find the employees whose commission is greater than their salary.
+6.	Find the employees whose commissiON is greater than their salary.
 
-7.	Find the employees whose commission is greater than 60 percent of their salary.
-8.	Find the employee whose commission is greater than 50 percent of their salary.
+7.	Find the employees whose commissiON is greater than 60 percent of their salary.
+8.	Find the employee whose commissiON is greater than 50 percent of their salary.
 
 9.	List the name, job and salary of all employees in dept 20 who earn more than 2000.
 	mysql> SELECT first_name, job_id, salary from employees WHERE department_id=20 and salary>2000;
@@ -53,23 +53,23 @@
 19.	Find the employees who are not clerks, analyst or salesman.
 	mysql> SELECT first_name from employees WHERE job_id NOT like "%clerk" and job_id like "%analyst" or job_id like "%man";
 
-20.	Find the employees who do not receive a commission i.e. commission is NULL.
-	mysql> SELECT first_name from employees WHERE commission_pct is null;
+20.	Find the employees who do not receive a commissiON i.e. commissiON is NULL.
+	mysql> SELECT first_name from employees WHERE commissiON_pct is null;
 
-21.	Find the employee whose commission is Rs. 0.
-	mysql> SELECT first_name from employees WHERE commission_pct=0;
+21.	Find the employee whose commissiON is Rs. 0.
+	mysql> SELECT first_name from employees WHERE commissiON_pct=0;
 
-22.	Find the different jobs of the employees receiving commission.
-	mysql> SELECT job_id from employees WHERE commission_pct is not null;
+22.	Find the different jobs of the employees receiving commissiON.
+	mysql> SELECT job_id from employees WHERE commissiON_pct is not null;
 
-23.	Find all employees who do not receive a commission or whose Commission is less than Rs. 100. 
-	mysql> SELECT first_name from employees WHERE commission_pct*salary < 100 or commission_pct*salary is NULL;
+23.	Find all employees who do not receive a commissiON or whose CommissiON is less than Rs. 100. 
+	mysql> SELECT first_name from employees WHERE commissiON_pct*salary < 100 or commissiON_pct*salary is NULL;
 
-24.	The employees who not receiving commission are entailed to Rs. 250, Show the net earnings of all employees. (find about nvl() )
-	mysql> SELECT first_name,last_name,IFNULL(commission_pct,250),((IFNULL(commission_pct,250)*salary)+salary) as netsalary from employees;
+24.	The employees who not receiving commissiON are entailed to Rs. 250, Show the net earnings of all employees. (find about nvl() )
+	mysql> SELECT first_name,last_name,IFNULL(commissiON_pct,250),((IFNULL(commissiON_pct,250)*salary)+salary) as netsalary from employees;
 
 25.	Find all employees whose total earnings are greater than Rs. 2000.
-	mysql> SELECT *,(IFNULL(commission_pct,0)*salary+salary) as netsalary from employees where (IFNULL(commission_pct,0) *salary+salary)>2000;
+	mysql> SELECT *,(IFNULL(commissiON_pct,0)*salary+salary) as netsalary from employees WHERE (IFNULL(commissiON_pct,0) *salary+salary)>2000;
 
 26.	Find all employees whose names begin with m.
 	mysql> SELECT First_name from employees WHERE first_name like "m%";
@@ -77,21 +77,21 @@
 27.	Find all employees whose names end with m.
 	mysql> SELECT First_name from employees WHERE first_name like "%m";
 
-28.	Find all employees whose names contain the letter m.
+28.	Find all employees whose names cONtain the letter m.
 	mysql> SELECT First_name from employees WHERE first_name like "%m%";
 
-29.	Find the employees whose names are 5 characters long and end with n.
+29.	Find the employees whose names are 5 characters lONg and end with n.
 	mysql> SELECT First_name from employees WHERE length(first_name)=5 and first_name like "%n";
 
 30.	Find the employees who have the letter r as the third letter in their name.
 	mysql> SELECT First_name from employees WHERE first_name like "__r%";
 
-2)	Numeric, Character & Date Function 
+2)	Numeric, Character & Date FunctiON 
 
-31.	Find all employees hired in month of February (of any year).
-	mysql> SELECT first_name from employees WHERE month(hire_date)=2;
+31.	Find all employees hired in mONth of February (of any year).
+	mysql> SELECT first_name from employees WHERE mONth(hire_date)=2;
 	
-32.	Find all employees who were hired on the last day of the month. 
+32.	Find all employees who were hired ON the last day of the mONth. 
 	mysql> SELECT first_name from employees WHERE last_day('hire_date');
 	
 33.	Find the employees who were hired more than 12 years ago.
@@ -103,10 +103,10 @@
 	    -> WHERE job_id like "%mgr" and hire_date like"2007%";
 
 35.	Display the names and the jobs of all employees, separated by ','(comma). For example (smith, clerk).
-	mysql> SELECT concat(first_name,',',job_id) from employees;
+	mysql> SELECT cONcat(first_name,',',job_id) from employees;
 
-36.	Display the names of all employees with the initial letter only in capitals.
-	mysql> SELECT concat(ucase(left(first_name,1)),lcase(substring(first_name,2))) from employees;
+36.	Display the names of all employees with the initial letter ONly in capitals.
+	mysql> SELECT cONcat(ucase(left(first_name,1)),lcase(substring(first_name,2))) from employees;
 
 37.	Display the names of all employees, right aligning them to 15 characters.
 	mysql> SELECT first_name,RPAD(first_name,15,'#') from employees;
@@ -134,50 +134,50 @@
 45.	Display the names of all employees replacing any 'a' with 'e'.
 	mysql> SELECT first_name,replace(first_name,'a','e') from employees;
 
-46.	Display the names of all employees and the position at which the string 'ar' occurs in the name.
+46.	Display the names of all employees and the positiON at which the string 'ar' occurs in the name.
 	mysql> SELECT first_name,locate('ar',first_name) from employees;
 
 47.	Show the salary of all employees rounding it to the nearest Rs. 1000. For example (3790 will be 4000)
 	mysql> SELECT first_name,salary,floor((salary + 999) / 1000) * 1000 'round salary'  from employees;
 
-48.	Show the daily salary of all employees assuming a month has 30 days.
+48.	Show the daily salary of all employees assuming a mONth has 30 days.
 	mysql> SELECT first_name,(salary/30) 'Daily salary' from employees;
 
-49.	Display the name of all employees, and their bonus. Assume each Employee gets a bonus of 20 percent of his salary subject to the Maximum of Rs. 500.
+49.	Display the name of all employees, and their bONus. Assume each Employee gets a bONus of 20 percent of his salary subject to the Maximum of Rs. 500.
 	
-50.	Display the name of all employees, and their bonus. Assume each employee gets a bonus of 20 percent of his salary subject to the Maximum of Rs. 200.
+50.	Display the name of all employees, and their bONus. Assume each employee gets a bONus of 20 percent of his salary subject to the Maximum of Rs. 200.
 
 51.	For each employee display the number of days passed since the employee joined the company.
 	mysql> SELECT first_name,datediff(current_date,hire_date) 'no of days' from employees;
 
-52.	For each employee display the number of months passed since the Employee joined the company.
-	mysql> SELECT first_name,ceil((datediff(current_date,hire_date)/30)) 'no of months' from employees;
+52.	For each employee display the number of mONths passed since the Employee joined the company.
+	mysql> SELECT first_name,ceil((datediff(current_date,hire_date)/30)) 'no of mONths' from employees;
 
-53.	Display the tenure of service in the years, months and days for all Employees in character format. Assume every month has 30 days.
+53.	Display the tenure of service in the years, mONths and days for all Employees in character format. Assume every mONth has 30 days.
 
-54.	Display the employee details in the following manner. 'Miler joined on the twenty-third of January of the year nineteen hundred and eighty Two'.
+54.	Display the employee details in the following manner. 'Miler joined ON the twenty-third of January of the year nineteen hundred and eighty Two'.
 
 3)	Ordering by Queries
-55.	Display the details of all employees, sorted on the names.
+55.	Display the details of all employees, sorted ON the names.
 	mysql> SELECT *
     		-> FROM employees
     		-> ORDER BY first_name ;
 
-56.	Display the name of all employees, based on their tenure, with the oldest employee coming first.
+56.	Display the name of all employees, based ON their tenure, with the oldest employee coming first.
 	mysql> SELECT first_name from employees order by hire_date;	
 
-57.	Display the names, job and salary of all employees sorted on jobs and Salary.
+57.	Display the names, job and salary of all employees sorted ON jobs and Salary.
 	mysql> SELECT first_name,last_name,job_id,salary from employees order by job_id ,salary;
 
-58.	Display the names, job and salary of all employees, sorted on jobs and within job, sorted on the descending order of salary.
+58.	Display the names, job and salary of all employees, sorted ON jobs and within job, sorted ON the descending order of salary.
 	mysql> SELECT first_name,last_name,job_id,salary from employees order by job_id ,salary desc;
 
-59.	Display the names, job and salary of all employees, sorted on Descending order of job and within job, sorted on the descending order of salary.
+59.	Display the names, job and salary of all employees, sorted ON Descending order of job and within job, sorted ON the descending order of salary.
 	mysql> SELECT first_name,last_name,job_id,salary from employees order by job_id desc,salary desc;
 
-60.	Display the name, month and year of all employees, sorted on the month of their hire date irrespective of the year.
-	mysql> SELECT first_name,month(hire_date) 'month',year(hire_date) 'year' from employees order by month(hire_date);
+60.	Display the name, mONth and year of all employees, sorted ON the mONth of their hire date irrespective of the year.
+	mysql> SELECT first_name,mONth(hire_date) 'mONth',year(hire_date) 'year' from employees order by mONth(hire_date);
 
-61.	Display the name, month and year of joining of all employees, sorted on the month of their hire date, and within that on the year, with the earliest year appearing first.
-	mysql> SELECT first_name,month(hire_date) 'month',year(hire_date) 'year' from employees order by month(hire_date),year(hire_date);
+61.	Display the name, mONth and year of joining of all employees, sorted ON the mONth of their hire date, and within that ON the year, with the earliest year appearing first.
+	mysql> SELECT first_name,mONth(hire_date) 'mONth',year(hire_date) 'year' from employees order by mONth(hire_date),year(hire_date);
 	

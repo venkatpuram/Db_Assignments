@@ -10,11 +10,11 @@
 
 4)	LIST ALL THE EMPLOYEES WHO ARE WORKING IN FORD’S DEPARTMENT.
 
-	mysql> SELECT * from employees where department_id=(SELECT department_id from employees where first_name='amit');
+	mysql> SELECT * from employees WHERE department_id=(SELECT department_id from employees WHERE first_name='amit');
 
 5)	LIST ALL EMPLOYEE WHO ARE WORKING IN WARD'S DEPARTMENT AND
 	EARNING MORE THEN MARTIN
-	mysql> SELECT e.*,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id where department_name='sales' and salary>(SELECT salary from employees where first_name='jack');
+	mysql> SELECT e.*,d.department_name from employees e INNER JOIN departments d ON e.department_id=d.department_id WHERE department_name='sales' and salary>(SELECT salary from employees WHERE first_name='jack');
 	
 
 
@@ -63,13 +63,13 @@
 
 
 14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
-	 mysql> SELECT min(salary) from employees where salary<>(SELECT min(salary) from employees);
+	 mysql> SELECT min(salary) from employees WHERE salary<>(SELECT min(salary) from employees);
 
 15)	 FIND THE MAX 3 SALARIES FROM EMPLOYEE TABLE.
 	 mysql> SELECT distinct salary from employees order by salary desc limit 3;
 	
 16)	 DISPLAY COMMON RECORDS FROM EMP_1 & EMP_2 TABLES. (USE INTERSECT)
-	 mysql> SELECT department_id from employees where department_id IN (select department_id from departments);
+	 mysql> SELECT department_id from employees WHERE department_id IN (select department_id from departments);
 
 17)	 DISPLAY DEPARTMENT NO WISE TOTAL SALARY WHERE MORE THAN 2 EMPLOYEES EXIST IN A DEPARTMENT.
 	 
