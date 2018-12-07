@@ -72,5 +72,5 @@
 	 mysql> SELECT department_id from employees WHERE department_id IN (select department_id from departments);
 
 17)	 DISPLAY DEPARTMENT NO WISE TOTAL SALARY WHERE MORE THAN 2 EMPLOYEES EXIST IN A DEPARTMENT.
+	 mysql> SELECT department_id,SUM(salary) from employees GROUP BY department_id HAVING COUNT(employee_id)>2;
 	 
-
